@@ -1,0 +1,55 @@
+@charset "ISO-8859-1";
+table,th,td{
+	border:1px solid black;
+	border-collapse : collapse;
+}
+table{
+	margin-left: auto;
+	margin-right: auto;
+}
+td,th{
+	width: 150px;
+}
+
+td{
+	padding-left: 10px;
+}
+th{
+	font-weight: strong;
+}
+h1{
+	text-align: center;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.back{
+	width:100px;
+	height:40px;
+	margin-left: 75%;
+	margin-top: 30px;
+	text-align: center;
+}
+.save{
+	width:80px;
+	height:40px;
+	margin-left: 31.8%;
+	margin-top: 10px;
+	text-align: center;
+}
+li{
+	font-size: 30px;
+	list-style-type: none;
+	border-bottom-style: dashed;
+	border-width: 1px;
+}
+.firstli{
+	border-top-style: dashed;
+	border-width: 1px;
+}
+a{
+	text-decoration: none;
+}
+a:visited{
+	color: blue;
+}
