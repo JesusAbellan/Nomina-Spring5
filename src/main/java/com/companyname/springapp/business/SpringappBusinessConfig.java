@@ -1,3 +1,4 @@
+
 package com.companyname.springapp.business;
 
 import java.util.Properties;
@@ -17,7 +18,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-import com.companyname.springapp.business.entities.Product;
 import com.companyname.springapp.business.entities.Empleado;
 import com.companyname.springapp.business.entities.Nomina;
 
@@ -45,7 +45,6 @@ public class SpringappBusinessConfig {
 
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
-        emf.setPackagesToScan(Product.class.getPackage().getName());
         emf.setPackagesToScan(Empleado.class.getPackage().getName());
         emf.setPackagesToScan(Nomina.class.getPackage().getName());
         

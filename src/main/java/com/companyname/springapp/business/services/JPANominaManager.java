@@ -23,5 +23,9 @@ public class JPANominaManager implements NominaManager {
 	public void actualizarNomina(Nomina nom) {
 		nominaRepository.save(nom);
 	}
+	
+	public void eliminar(Nomina nom) {
+		nominaRepository.delete(nom);
+	}
 
 }

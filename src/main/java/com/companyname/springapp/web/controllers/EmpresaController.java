@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.companyname.springapp.business.entities.Empleado;
+import com.companyname.springapp.business.entities.Nomina;
 import com.companyname.springapp.business.services.EmpleadoManager;
 import com.companyname.springapp.business.services.NominaManager;
 import com.companyname.springapp.exception.DatosNoCorrectosException;
@@ -117,6 +118,16 @@ public class EmpresaController {
 		return new ModelAndView("mostrarEmpleados","model",myModel);
 	}
 	
+	@RequestMapping(value="/eliminar.htm")
+	public ModelAndView eliminar(@RequestParam String dni) {
+		nominaManager.eliminar(nominaManager.getNominaDNI(dni));
+		empleadoManager.eliminar(empleadoManager.getEmpleadoDNI(dni));
+
+		Map<String,Object> myModel = new HashMap<String,Object>();
+		myModel.put("empleados", empleadoManager.getEmpleados());
+		return new ModelAndView("mostrarEmpleados","model",myModel);
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value ="/editar.htm")
 	public ModelAndView editar(@RequestParam String nombre,@RequestParam String dni,@RequestParam String sexo,@RequestParam int categoria,@RequestParam int anyos) {
 		Empleado emp = null;
@@ -127,7 +138,12 @@ public class EmpresaController {
 			e.printStackTrace();
 		}
 		empleadoManager.actualizarEmpleado(emp);
+		Nomina nom = nominaManager.getNominaDNI(emp.dni);
+		nom.setSueldo(nom.sueldo(emp));
+		nominaManager.actualizarNomina(nom);
 		
-		return new ModelAndView("index");
+		Map<String,Object> myModel = new HashMap<String,Object>();
+		myModel.put("empleados", empleadoManager.getEmpleados());
+		return new ModelAndView("mostrarEmpleados","model",myModel);
 	}
 }

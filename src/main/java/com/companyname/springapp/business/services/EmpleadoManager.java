@@ -25,4 +25,6 @@ public interface EmpleadoManager {
 	public List<String> getDNIs();
 	
 	public void actualizarEmpleado(Empleado emp);
+	
+	public void eliminar(Empleado emp);
 }

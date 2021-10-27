@@ -53,5 +53,9 @@ public class JPAEmpleadoManager implements EmpleadoManager {
 	public void actualizarEmpleado(Empleado emp) {
 		empleadoRepository.save(emp);
 	}
+	
+	public void eliminar(Empleado emp) {
+		empleadoRepository.delete(emp);
+	}
 
 }
